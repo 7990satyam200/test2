@@ -11,7 +11,7 @@ def mongodb_connection():
     Establishes a connection to the MongoDB database using the environment variables 'MONGO_URL' and 'MONGO_DATABASE'.
     """
     try:
-        mongo_client = MongoClient(os.getenv('MONGO_URI'))
+        mongo_client = MongoClient(os.getenv('MONGODB_URI'))
         db = mongo_client['test']
     except ValueError as e:
         raise ValueError(f"Error in mongodb_connection: {e.args[0]}")
@@ -95,6 +95,7 @@ class AssistantManager(BaseManager):
                 # removing context_data from non-conversational tasks
                 self.context_data = None
             logger.info(f"task_output {task_output}")
+            logger.info(f"task_output type {type(task_output)}")
             db['execution_metadata'].insert_one(task_output)
             if task["task_type"] == "extraction":
                 input_parameters["extraction_details"] = task_output["extracted_data"]
