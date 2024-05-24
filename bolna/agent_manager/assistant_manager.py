@@ -43,6 +43,30 @@ class AssistantManager(BaseManager):
                                        connected_through_dashboard=self.connected_through_dashboard,
                                        cache=self.cache, input_queue=self.input_queue, output_queue=self.output_queue,
                                        conversation_history=self.conversation_history, **self.kwargs)
+
+            print("************************************************************************************************")
+            logger.info("agent_name: ", self.agent_config.get("agent_name", self.agent_config.get("assistant_name")))
+            logger.info("task_id: ", task_id)
+            logger.info(task)
+            logger.info("kwargs: ", self.kwargs)
+            logger.info("context_data: ", self.context_data)
+            logger.info("input_parameters: ", input_parameters)
+            logger.info("assistant_id: ", self.assistant_id)
+            logger.info("run_id: ", self.run_id)
+            logger.info("connected_through_dashboard: ", self.connected_through_dashboard)
+            logger.info("cache: ", self.cache)
+            logger.info("input_queue: ", self.input_queue)
+            logger.info("output_queue: ", self.output_queue)
+            logger.info("conversation_history: ", self.conversation_history)
+            logger.info("kwargs: ", self.kwargs)
+            logger.info("transcriber duration", task_manager.transcriber_duration)
+            logger.info("synthesizer voice", task_manager.synthesizer_voice)
+            logger.info("synthesizer provider", task_manager.synthesizer_provider)
+            logger.info("synthesizer characters", task_manager.synthesizer_characters)
+            logger.info("LLM providers", self.task_config["tools_config"]["llm_agent"]["provider"])
+            print("************************************************************************************************")
+
+
             await task_manager.load_prompt(self.agent_config.get("agent_name", self.agent_config.get("assistant_name")),
                                            task_id, local=local, **self.kwargs)
             task_output = await task_manager.run()
