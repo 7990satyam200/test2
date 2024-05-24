@@ -96,6 +96,11 @@ class AssistantManager(BaseManager):
                 self.context_data = None
             logger.info(f"task_output {task_output}")
             logger.info(f"task_output type {type(task_output)}")
+            task_output['model'] = task_manager.task_config["tools_config"]["llm_agent"]["model"]
+            task_output['temperature'] = task_manager.task_config["tools_config"]["llm_agent"]["temperature"]
+            task_output['max_tokens'] = task_manager.task_config["tools_config"]["llm_agent"]["max_tokens"]
+            task_output['synthesizer_voice'] = task_manager.synthesizer_voice
+            task_output['synthesizer_provider'] = task_manager.synthesizer_provider
             db['execution_metadata'].insert_one(task_output)
             if task["task_type"] == "extraction":
                 input_parameters["extraction_details"] = task_output["extracted_data"]
