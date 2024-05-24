@@ -45,8 +45,8 @@ class AssistantManager(BaseManager):
                                        conversation_history=self.conversation_history, **self.kwargs)
 
             print("************************************************************************************************"*20)
-            logger.info("agent_name: ", self.agent_config.get("agent_name", self.agent_config.get("assistant_name")))
-            logger.info("task_id: ", task_id)
+            logger.info(self.agent_config.get("agent_name", self.agent_config.get("assistant_name")))
+            logger.info(task_id)
             # logger.info(task)
             # logger.info("kwargs: ", self.kwargs)
             # logger.info("context_data: ", self.context_data)
