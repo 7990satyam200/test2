@@ -63,7 +63,13 @@ class AssistantManager(BaseManager):
             logger.info("synthesizer voice", task_manager.synthesizer_voice)
             logger.info("synthesizer provider", task_manager.synthesizer_provider)
             logger.info("synthesizer characters", task_manager.synthesizer_characters)
-            logger.info("LLM providers", self.task_config["tools_config"]["llm_agent"]["provider"])
+            logger.info("LLM providers", task_manager.task_config["tools_config"]["llm_agent"]["provider"])
+            logger.info("LLM model", task_manager["tools_config"]["llm_agent"]["model"])
+            logger.info("LLM temperature", task_manager["tools_config"]["llm_agent"]["temperature"])
+            logger.info("LLM max tokens", task_manager["tools_config"]["llm_agent"]["max_tokens"])
+            logger.info("LLM max retries", task_manager["tools_config"]["llm_agent"]["max_retries"])
+            logger.info("LLM retry delay", task_manager["tools_config"]["llm_agent"]["retry_delay"])
+            logger.info("Latency", task_manager.latency_dict)
             print("************************************************************************************************"*20)
 
 
