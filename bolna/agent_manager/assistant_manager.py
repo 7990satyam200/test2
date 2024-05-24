@@ -58,7 +58,7 @@ class AssistantManager(BaseManager):
             # logger.info("output_queue: ", self.output_queue)
             # logger.info("conversation_history: ", self.conversation_history)
             # logger.info("kwargs: ", self.kwargs)
-            logger.info("transcriber duration$ #546: {task_manager.transcriber_duration}")
+            logger.info(f"transcriber duration$ #546: {task_manager.transcriber_duration}")
             # logger.info("synthesizer voice", task_manager.synthesizer_voice)
             # logger.info("synthesizer provider", task_manager.synthesizer_provider)
             # logger.info("synthesizer characters", task_manager.synthesizer_characters)
