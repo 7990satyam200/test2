@@ -44,7 +44,7 @@ class AssistantManager(BaseManager):
                                        cache=self.cache, input_queue=self.input_queue, output_queue=self.output_queue,
                                        conversation_history=self.conversation_history, **self.kwargs)
 
-            print("************************************************************************************************")
+            print("************************************************************************************************"*20)
             logger.info("agent_name: ", self.agent_config.get("agent_name", self.agent_config.get("assistant_name")))
             logger.info("task_id: ", task_id)
             logger.info(task)
@@ -64,7 +64,7 @@ class AssistantManager(BaseManager):
             logger.info("synthesizer provider", task_manager.synthesizer_provider)
             logger.info("synthesizer characters", task_manager.synthesizer_characters)
             logger.info("LLM providers", self.task_config["tools_config"]["llm_agent"]["provider"])
-            print("************************************************************************************************")
+            print("************************************************************************************************"*20)
 
 
             await task_manager.load_prompt(self.agent_config.get("agent_name", self.agent_config.get("assistant_name")),
